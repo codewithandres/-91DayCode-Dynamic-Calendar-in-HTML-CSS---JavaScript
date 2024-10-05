@@ -5,10 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Calendar | Andres.devs</title>
+    <!-- remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- custom js -->
+    <script type="module" src="js/app.js"></script>
 </head>
 
 <body>
-
+    <div class="container">
+        <div class="calendar">
+            <div class="header">
+                <div class="month">October 24</div>
+                <div class="buttons">
+                    <div class="button today">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <div class="button prev" data-nextButton>
+                        <i class="ri-arrow-drop-right-line"></i>
+                    </div>
+                    <div class="button next">
+                        <i class="ri-arrow-drop-left-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
