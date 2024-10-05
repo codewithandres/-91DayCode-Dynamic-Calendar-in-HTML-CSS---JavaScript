@@ -76,3 +76,15 @@ body {
         outline: 1px solid #b3b0b073;
     }
 }
+
+.weekdays {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.weekdays .day {
+    width: calc(100%/ 7 - 10px);
+    text-align: center;
+    font-size: 1em;
+}
