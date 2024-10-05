@@ -1,3 +1,8 @@
+const daysContainer = document.querySelector('.days'),
+    mooth = document.querySelector('.month'),
+    nexButton = document.querySelector('[data-nextButton]'),
+    prevButton = document.querySelector('[data-prevButton]');
+
 const months = [
     'January',
     'February',
