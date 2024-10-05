@@ -1,7 +1,8 @@
 const daysContainer = document.querySelector('.days'),
     mooth = document.querySelector('.month'),
     nexButton = document.querySelector('[data-nextButton]'),
-    prevButton = document.querySelector('[data-prevButton]');
+    prevButton = document.querySelector('[data-prevButton]'),
+    todayButton = document.querySelector('.today');
 
 const months = [
     'January',
@@ -67,6 +68,8 @@ const renderCalendar = () => {
     for (let j = 1; j <= nextDays; j++) {
         days += `<div class="day today-next">${j}</div>`;
     }
+
+    hidetodayButton();
     // render days
     daysContainer.innerHTML = days;
 };
@@ -84,8 +87,6 @@ nexButton.addEventListener('click', () => {
     renderCalendar();
 });
 
-renderCalendar();
-
 // prev btn
 prevButton.addEventListener('click', () => {
     // increase current month by one
@@ -98,3 +99,23 @@ prevButton.addEventListener('click', () => {
     }
     renderCalendar();
 });
+
+// go to day
+todayButton.addEventListener('click', () => {
+    currentMoonth = date.getMonth();
+    currentYear = date.getFullYear();
+    renderCalendar();
+});
+
+// lets hide today btn its already today
+const hidetodayButton = () => {
+    if (
+        currentMoonth === new Date().getMonth() &&
+        currentYear === new Date().getFullYear()
+    ) {
+        todayButton.style.display = 'none';
+    } else {
+        todayButton.style.display = 'flex';
+    }
+};
+renderCalendar();
