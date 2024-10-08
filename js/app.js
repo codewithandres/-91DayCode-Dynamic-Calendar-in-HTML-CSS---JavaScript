@@ -1,4 +1,5 @@
 const daysContainer = document.querySelector('.days'),
+    containerCanlenadar = document.querySelector('.calendar'),
     mooth = document.querySelector('.month'),
     nexButton = document.querySelector('[data-nextButton]'),
     prevButton = document.querySelector('[data-prevButton]'),
@@ -77,39 +78,39 @@ const renderCalendar = () => {
         .forEach(element => element.classList.add('animate__swing'));
 };
 
-//next btn,
-nexButton.addEventListener('click', () => {
-    // increase current month by one
-    currentMoonth++;
+containerCanlenadar.addEventListener('click', event => {
+    // next button
+    if (event.target.closest('[data-nextButton]')) {
+        // increase current month by one
+        currentMoonth++;
 
-    if (currentMoonth > 11) {
-        // if month is greater than 11 make it 0 and increase year by one
-        currentMoonth = 0;
-        currentYear++;
+        if (currentMoonth > 11) {
+            // if month is greater than 11 make it 0 and increase year by one
+            currentMoonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+        AnimationNextButton();
     }
-    renderCalendar();
-    AnimationNextButton();
-});
+    // prev button
+    if (event.target.closest('[data-prevButton]')) {
+        // increase current month by one
+        currentMoonth--;
 
-// prev btn
-prevButton.addEventListener('click', () => {
-    // increase current month by one
-    currentMoonth--;
-
-    if (currentMoonth < 0) {
-        // if month is greater than 11 make it 0 and increase year by one
-        currentMoonth = 11;
-        currentYear--;
+        if (currentMoonth < 0) {
+            // if month is greater than 11 make it 0 and increase year by one
+            currentMoonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+        AnimationPrevButton();
     }
-    renderCalendar();
-    AnimationPrevButton();
-});
-
-// go to day
-todayButton.addEventListener('click', () => {
-    currentMoonth = date.getMonth();
-    currentYear = date.getFullYear();
-    renderCalendar();
+    // go to day
+    if (event.target.closest('.today')) {
+        currentMoonth = date.getMonth();
+        currentYear = date.getFullYear();
+        renderCalendar();
+    }
 });
 
 // lets hide today btn its already today
@@ -123,6 +124,7 @@ const hidetodayButton = () => {
         todayButton.style.display = 'flex';
     }
 };
+
 renderCalendar();
 
 const AnimationNextButton = () => {
