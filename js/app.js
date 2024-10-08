@@ -61,7 +61,7 @@ const renderCalendar = () => {
         ) {
             days += `<div class="day today-active">${i}</div>`;
         } else {
-            days += `<div class="day">${i}</div>`;
+            days += `<div class="day animate__animated">${i}</div>`;
         }
     }
     // next moonth days
@@ -72,9 +72,12 @@ const renderCalendar = () => {
     hidetodayButton();
     // render days
     daysContainer.innerHTML = days;
+    document
+        .querySelectorAll('.day')
+        .forEach(element => element.classList.add('animate__swing'));
 };
 
-//next btn
+//next btn,
 nexButton.addEventListener('click', () => {
     // increase current month by one
     currentMoonth++;
@@ -85,6 +88,7 @@ nexButton.addEventListener('click', () => {
         currentYear++;
     }
     renderCalendar();
+    AnimationNextButton();
 });
 
 // prev btn
@@ -98,6 +102,7 @@ prevButton.addEventListener('click', () => {
         currentYear--;
     }
     renderCalendar();
+    AnimationPrevButton();
 });
 
 // go to day
@@ -119,3 +124,17 @@ const hidetodayButton = () => {
     }
 };
 renderCalendar();
+
+const AnimationNextButton = () => {
+    mooth.classList.add('animate__fadeInDown');
+    setTimeout(() => {
+        mooth.classList.remove('animate__fadeInDown');
+    }, 600);
+};
+
+const AnimationPrevButton = () => {
+    mooth.classList.add('animate__fadeInUp');
+    setTimeout(() => {
+        mooth.classList.remove('animate__fadeInUp');
+    }, 600);
+};
